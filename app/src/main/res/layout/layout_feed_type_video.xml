@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="mFeed"
+            type="Feed" />
+        <variable
+            name="owner"
+            type="androidx.lifecycle.LifecycleOwner" />
+
+        <import type="com.zzs.ppjoke_kotlin_jetpack.model.respmodel.Feed" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_feed_author"
+            app:mUser="@{mFeed.author}" />
+        <include
+            layout="@layout/layout_feed_text"
+            app:feedText="@{mFeed.feeds_text}"
+            app:lines = "@{3}"/>
+        <!--         视频图片-->
+        <com.zzs.ppjoke_kotlin_jetpack.view.ListPlayView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:id="@+id/mListPlayer"/>
+
+        <include layout="@layout/layout_feed_tag"
+            app:tagText="@{mFeed.activityText}"/>
+        <include layout="@layout/layout_feed_top_comment"
+            app:mComment = "@{mFeed.topComment}"/>
+        <include layout="@layout/layout_feed_interaction"
+            app:mFeed = "@{mFeed}"
+            app:lifeOwner="@{owner}"/>
+
+    </LinearLayout>
+</layout>

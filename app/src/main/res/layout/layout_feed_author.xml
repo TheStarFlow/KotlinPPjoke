@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="mUser"
+            type="User" />
+        <import type="com.zzs.ppjoke_kotlin_jetpack.model.respmodel.User" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16">
+
+        <ImageView
+            android:id="@+id/mAvatar"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_gravity="center_vertical"
+            app:bindUrl="@{mUser.avatar}"
+            app:bindIsCircle="@{true}"
+            tools:src="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:gravity="center"
+            android:text="@{mUser.name}"
+            android:textColor="@color/color_333"
+            android:textSize="@dimen/sp_14"
+            android:textStyle="bold"
+            tools:text="你好疯子" />
+    </LinearLayout>
+</layout>

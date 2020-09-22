@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="mFeed"
+            type="Feed" />
+        <variable
+            name="lifeOwner"
+            type="androidx.lifecycle.LifecycleOwner" />
+
+        <import type="com.zzs.ppjoke_kotlin_jetpack.common.utils.StringConvert"/>
+        <import type="com.zzs.ppjoke_kotlin_jetpack.model.respmodel.Feed"/>
+        <import type="com.zzs.ppjoke_kotlin_jetpack.ui.home.InteractionPresenter"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/like"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@{mFeed.ugc.likeCount>0?StringConvert.stringConvert(mFeed.ugc.likeCount):@string/like}"
+            android:textColor="@{mFeed.ugc.hasLiked?@color/color_theme:@color/color_3d3}"
+            android:textSize="@dimen/sp_14"
+            app:backgroundTint="@color/color_white"
+            app:cornerRadius="0dp"
+            app:icon="@{mFeed.ugc.hasLiked?@drawable/icon_cell_liked:@drawable/icon_cell_like}"
+            app:iconGravity="textStart"
+            app:iconPadding="4dp"
+            app:iconTint="@{mFeed.ugc.hasLiked?@color/color_theme:@color/color_3d3}"
+            tools:icon="@drawable/icon_cell_like"
+            tools:iconTint="@color/color_3d3"
+            tools:text="1000"
+            tools:textColor="@color/color_3d3"
+            android:onClick="@{()->InteractionPresenter.toggleFeedLike(lifeOwner,mFeed)}"
+            />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/diss"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="踩"
+            android:textColor="@{mFeed.ugc.hasDissed?@color/color_theme:@color/color_3d3}"
+            android:textSize="@dimen/sp_14"
+            app:backgroundTint="@color/color_white"
+            app:cornerRadius="0dp"
+            app:icon="@{mFeed.ugc.hasDissed?@drawable/icon_cell_dissed:@drawable/icon_cell_diss}"
+            app:iconGravity="textStart"
+            app:iconPadding="4dp"
+            app:iconTint="@{mFeed.ugc.hasDissed?@color/color_theme:@color/color_3d3}"
+            tools:icon="@drawable/icon_cell_diss"
+            tools:iconTint="@color/color_3d3"
+            tools:text="1000"
+            tools:textColor="@color/color_3d3"
+            android:onClick="@{()->InteractionPresenter.toggleFeedDiss(mFeed,lifeOwner)}"/>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/comment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@{mFeed.ugc.commentCount>0?StringConvert.stringConvert(mFeed.ugc.commentCount):@string/feed_comment}"
+            android:textColor="@color/color_3d3"
+            android:textSize="@dimen/sp_14"
+            app:backgroundTint="@color/color_white"
+            app:cornerRadius="0dp"
+            app:icon="@drawable/icon_cell_comment"
+            app:iconGravity="textStart"
+            app:iconPadding="4dp"
+            app:iconTint="@color/color_3d3"
+            tools:icon="@drawable/icon_cell_comment"
+            tools:iconTint="@color/color_3d3"
+            tools:text="1000"
+            tools:textColor="@color/color_3d3" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/share"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@{mFeed.ugc.shareCount>0?StringConvert.stringConvert(mFeed.ugc.shareCount):@string/share}"
+            android:textColor="@color/color_3d3"
+            android:textSize="@dimen/sp_14"
+            app:backgroundTint="@color/color_white"
+            app:cornerRadius="0dp"
+            app:icon="@drawable/icon_cell_share"
+            app:iconGravity="textStart"
+            app:iconPadding="4dp"
+            app:iconTint="@color/color_3d3"
+            tools:icon="@drawable/icon_cell_share"
+            tools:iconTint="@color/color_3d3"
+            tools:text="1000"
+            tools:textColor="@color/color_3d3" />
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,4 @@
+include ':common'
+include ':network'
+include ':app'
+rootProject.name = "ppjoke_kotlin_jetpack"
